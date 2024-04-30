@@ -4,20 +4,20 @@
 #!/bash/bin
 
 #check if the input file is provided or not
-#if [ $# -ne 1 ];
-#then
+if [ $# -ne 1 ];
+then
 #checks the numbers of arguments provided to the script is != 1. # represents the arguments passed to script
-#echo "Usage: $0 input_file.txt"
-#exit 1
-#fi
+echo "Usage: $0 input_file.txt"
+exit 1
+fi
 
 #check if the input file exits
-#if [[ ! -f "$1" ]];
-#then
+if [[ ! -f "$1" ]];
+then
 #checks whether the file exits or not
-#echo "Error: Input file '$1' not found ."
-#exit 1
-#fi
+echo "Error: Input file '$1' not found ."
+exit 1
+fi
 
 #Read each line from the input file
 while IFS= read -r line;
@@ -30,6 +30,6 @@ read -r num1 num2 num3 <<< "$line"
 sum=$((num1 +num2 +num3))
  #display the sum
 echo "sum of integers in the line: $sum"
-done < ./assignment3/input_file.txt  #marks the end of the loop and <"$1" redirects the contents of the input files ('$1') to the "while" loop
+done < "$1"  #marks the end of the loop and <"$1" redirects the contents of the input files ('$1') to the "while" loop
 
 
